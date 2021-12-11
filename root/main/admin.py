@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import Gallery, News, Partners
+from .models import Contacts, Gallery, News, Partners, Prices
 
 
 @admin.register(News)
@@ -13,7 +13,6 @@ class NewsAdmin(admin.ModelAdmin):
     actions = ['publish', 'unpublish']    
     fields = ('title', 'anons', 'text', 'date', 'image', 'get_img', 'url', 'draft')
     readonly_fields = ('get_img', )
-    search_fields = ('title', )
     save_on_top = True
     save_as = True 
         
@@ -47,14 +46,30 @@ class NewsAdmin(admin.ModelAdmin):
     unpublish.short_description = 'Снять с публикации'
     unpublish.allowed_permissions = ('change', )  
     
+    get_img.short_description = 'Миниатюра'    
+    
+@admin.register(Prices)
+class PricesAdmin(admin.ModelAdmin):   
+    list_display = ('title', 'season', 'price', 'get_img')
+    list_display_links = ('title', 'get_img')
+    list_filter = ('title', 'season', 'price') 
+    fields = ('title', 'season', 'description', 'price', 'image', 'get_img')
+    readonly_fields = ('get_img', )
+    
+    def get_img(self, obj):
+        if obj.image:
+            return mark_safe(f'<img src="{obj.image.url}" width="88px">')
+        else:
+            return 'нет картинки'
+        
     get_img.short_description = 'Миниатюра'
 
+    
 @admin.register(Gallery)
 class GalleryAdmin(admin.ModelAdmin):
     list_display = ('title', 'season', 'date', 'get_img')
     list_display_links = ('title', 'get_img')
-    list_filter = ('title', 'season', 'date',)  
-    search_fields = ('title', 'season')
+    list_filter = ('title', 'season', 'date') 
     fields = ('title', 'season', 'date', 'image', 'get_img')
     readonly_fields = ('get_img', )
     
@@ -65,7 +80,7 @@ class GalleryAdmin(admin.ModelAdmin):
             return 'нет картинки'
         
     get_img.short_description = 'Миниатюра'
-    
+
 @admin.register(Partners)
 class PartnersAdmin(admin.ModelAdmin):
     list_display = ('partner', 'get_img')
@@ -80,6 +95,8 @@ class PartnersAdmin(admin.ModelAdmin):
             return 'нет картинки'
         
     get_img.short_description = 'Миниатюра'
-    
+
+admin.site.register(Contacts)
+
 admin.site.site_title = 'ENSOPARK'
 admin.site.site_header = 'ENSOPARK'
