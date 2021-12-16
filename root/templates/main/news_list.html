@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Новости {% endblock title %}
+{% block content %}
+
+<!-- Блог начало -->
+<section id="blog" class="section">
+    <!-- Container Starts -->
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Новости Экстрим парка Ensopark</h2>
+            <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos debitis.
+            </p>
+        </div>
+        <div class="row">
+            {% for el in page_obj %}
+            <!-- Blog Item Starts -->
+            <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
+                <div class="blog-item-wrapper">
+                    <div class="blog-item-img">
+                        <a href="single-post.html">
+                            <img src="{{ el.image.url }}" width="450" height="250" alt="">
+                        </a>
+                    </div>
+                    <div class="blog-item-text">
+                        <div class="date"><i class="lni-calendar"></i>{{ el.date }}</div>
+                        <h3><a href="single-post.html">{{ el.anons }}</a></h3>
+                        <p>{{ el.text }}</p>
+                        <a href="#" class="btn btn-common-blog mt-3 btn-effect">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Blog Item Wrapper Ends-->
+            {% endfor %}
+        </div>
+
+        <!-- Пагинация начало -->
+        <div class="pagination-blog  mt-5">            
+            {% include 'include/pagination.html' %}
+        </div>
+        <!-- Пагинация конец -->
+    </div>
+</section>
+<!-- Блог конец -->
+
+<div class="d-flex justify-content-center mt-4">
+    <a href="{% url 'index' %}" class="btn btn-common price-btn btn-effect">На главную</a>
+</div>
+
+{% endblock content %}

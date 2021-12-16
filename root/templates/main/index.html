@@ -1,0 +1,594 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Главная {% endblock title %}
+{% block content %}
+
+
+
+<!-- Блог начало -->
+<section id="blog" class="section">
+    <!-- Container Starts -->
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Новости</h2>
+            <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos debitis.
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
+                <!-- Blog Item Starts -->
+                <div class="blog-item-wrapper">
+                    <div class="blog-item-img">
+                        <a href="single-post.html">
+                            <img src="{% static 'img/blog/img1.jpg' %}" alt="">
+                        </a>
+                    </div>
+                    <div class="blog-item-text">
+                        <div class="date"><i class="lni-calendar"></i>14.12.2021</div>
+                        <h3><a href="single-post.html">10 Tips to Design a High-converting Landing Page</a></h3>
+                        <a href="#" class="btn btn-common-blog mt-3 btn-effect">Подробнее</a>
+                    </div>
+                </div>
+                <!-- Blog Item Wrapper Ends-->
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
+                <!-- Blog Item Starts -->
+                <div class="blog-item-wrapper">
+                    <div class="blog-item-img">
+                        <a href="single-post.html">
+                            <img src="{% static 'img/blog/img2.jpg' %}" alt="">
+                        </a>
+                    </div>
+                    <div class="blog-item-text">
+                        <div class="date"><i class="lni-calendar"></i>14.12.2021</div>
+                        <h3><a href="single-post.html">How to Design a Website For Your App</a></h3>
+                        <a href="#" class="btn btn-common-blog mt-3 btn-effect">Подробнее</a>
+                    </div>
+                </div>
+                <!-- Blog Item Wrapper Ends-->
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
+                <!-- Blog Item Starts -->
+                <div class="blog-item-wrapper">
+                    <div class="blog-item-img">
+                        <a href="single-post.html">
+                            <img src="{% static 'img/blog/img3.jpg' %}" alt="">
+                        </a>
+                    </div>
+                    <div class="blog-item-text">
+                        <div class="date"><i class="lni-calendar"></i>14.12.2021</div>
+                        <h3><a href="single-post.html">7 Secretes to Optimize Loading Speed of Your Site</a></h3>
+                        <a href="#" class="btn btn-common-blog mt-3 btn-effect">Подробнее</a>
+                    </div>
+                </div>
+                <!-- Blog Item Wrapper Ends-->
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mt-5">
+            <a href="{% url 'news' %}" class="btn btn-common btn-effect">Все новости</a>
+        </div>
+    </div>
+</section>
+<!-- Блог конец -->
+
+<!-- Баннер 1 начало -->
+<section class="call-action section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="cta-trial text-center">
+                    <h3>Are You Ready To Get Started?</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod<br> Lorem
+                        ipsum dolor sit amet, consectetuer</p>
+                    <a href="#" class="btn btn-common btn-effect">Purchase Now!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Баннер 1 конец -->
+
+<!-- Активности начало -->
+<section id="services" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">СПИСОК АКТИВНОСТЕЙ</h2>
+            <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy</p>
+            <!-- Переключатель начало -->
+            <div class="toggle-radio">
+                <input type="radio" name="rdo" id="yes" checked>
+                <input type="radio" name="rdo" id="no">
+                <div class="switch">
+                    <label for="yes">Зима</label>
+                    <label for="no">Лето</label>
+                    <span></span>
+                </div>
+            </div>
+            <!-- Переключатель конец -->
+        </div>
+        <div class="activities">
+            <!-- Зимние активности начало -->
+            <div class="activity-winter row">
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="item-boxes services-item">
+                        <div class="icon winter">
+                            <i class="lni-pencil"></i>
+                        </div>
+                        <h4 class="winter">Прокат инвентаря и ски-сервис</h4>
+                        <p>Прокат сноубордов и горных лыж.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="item-boxes services-item" data-wow-delay="0.2s">
+                        <div class="icon winter">
+                            <i class="lni-cog"></i>
+                        </div>
+                        <h4 class="winter">Обучение</h4>
+                        <p>Опытные инструктора поставят на лыжи или сноуборд любого.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="item-boxes services-item" data-wow-delay="0.2s">
+                        <div class="icon winter">
+                            <i class="lni-stats-up"></i>
+                        </div>
+                        <h4 class="winter">Тюбинг</h4>
+                        <p>Любишь кататься - катайся, тюбинг поднимет подъемник.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="item-boxes services-item" data-wow-delay="0.2s">
+                        <div class="icon winter">
+                            <i class="lni-layers"></i>
+                        </div>
+                        <h4 class="winter">Снегоходы</h4>
+                        <p>Снегоходные прогулки по замерзшему озеру или по лесу.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="item-boxes services-item" data-wow-delay="0.2s">
+                        <div class="icon winter">
+                            <i class="lni-tab"></i>
+                        </div>
+                        <h4 class="winter">Детская школа</h4>
+                        <p>Детская горнолыжная школа для детей от 3-х лет</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="item-boxes services-item" data-wow-delay="0.2s">
+                        <div class="icon winter">
+                            <i class="lni-briefcase"></i>
+                        </div>
+                        <h4 class="winter">Склоны</h4>
+                        <p>Схема склонов и инфраструктуры экстрим-парка</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="item-boxes services-item" data-wow-delay="0.2s">
+                        <div class="icon winter">
+                            <i class="lni-briefcase"></i>
+                        </div>
+                        <h4 class="winter">Купить SKI-PASS</h4>
+                        <p>Купить или пополнить ваш ski-pass</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="item-boxes services-item" data-wow-delay="0.2s">
+                        <div class="icon winter">
+                            <i class="lni-briefcase"></i>
+                        </div>
+                        <h4 class="winter">Подарочные карты</h4>
+                        <p>Карта на услуги экстрим-парка с различным номиналом</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Зимние активности конец -->
+            <!-- Летние активности начало -->
+            <div class="activity-summer hidden row">
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="item-boxes services-item" data-wow-delay="0.2s">
+                        <div class="icon summer">
+                            <i class="lni-pencil"></i>
+                        </div>
+                        <h4 class="summer">Content Writing</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                            tincidunt ut.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="item-boxes services-item " data-wow-delay="0.2s">
+                        <div class="icon summer">
+                            <i class="lni-cog"></i>
+                        </div>
+                        <h4 class="summer">Web Development</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                            tincidunt ut.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="item-boxes services-item " data-wow-delay="0.2s">
+                        <div class="icon summer">
+                            <i class="lni-stats-up"></i>
+                        </div>
+                        <h4 class="summer">Graphic Design</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                            tincidunt ut.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="item-boxes services-item" data-wow-delay="0.2s">
+                        <div class="icon summer">
+                            <i class="lni-layers"></i>
+                        </div>
+                        <h4 class="summer">UI/UX Design</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                            tincidunt ut.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="item-boxes services-item" data-wow-delay="0.2s">
+                        <div class="icon summer">
+                            <i class="lni-tab"></i>
+                        </div>
+                        <h4 class="summer">App Development</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                            tincidunt ut.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="item-boxes services-item" data-wow-delay="0.2s">
+                        <div class="icon summer">
+                            <i class="lni-briefcase"></i>
+                        </div>
+                        <h4 class="summer">Digital Marketing</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                            tincidunt ut.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="item-boxes services-item" data-wow-delay="0.2s">
+                        <div class="icon summer">
+                            <i class="lni-briefcase"></i>
+                        </div>
+                        <h4 class="summer">Digital Marketing</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                            tincidunt ut.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="item-boxes services-item" data-wow-delay="0.2s">
+                        <div class="icon summer">
+                            <i class="lni-briefcase"></i>
+                        </div>
+                        <h4 class="summer">Digital Marketing</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                            tincidunt ut.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Летние активности конец -->
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <a href="#" class="price-btn btn btn-common btn-effect">Цены на услуги</a>
+        </div>
+    </div>
+</section>
+<!-- Активности конец -->
+
+<!-- Галерея начало -->
+<section id="portfolios" class="section">
+    <!-- Container Starts -->
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Галерея</h2>
+            <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos debitis.
+            </p>
+        </div>
+
+
+        <!-- Portfolio Recent Projects -->
+        <div id="gallery" class="row">
+            <!-- элемент картинки начало -->
+            <div class="col-lg-3 col-md-6 col-xs-12 mix development print">
+                <div class="portfolio-item">
+                    <div class="shot-item">
+                        <img src="{% static 'img/portfolio/img-1.jpg' %}" alt="" />
+                        <div class="single-content">
+                            <div class="fancy-table">
+                                <div class="table-cell">
+                                    <div class="zoom-icon">
+                                        <a href="{% static 'img/portfolio/img-1.jpg' %}" data-fancybox="#gallery"><i
+                                                class="lni-zoom-in item-icon"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- элемент картинки конец -->
+            <div class="col-lg-3 col-md-6 col-xs-12 mix development print">
+                <div class="portfolio-item">
+                    <div class="shot-item">
+                        <img src="{% static 'img/portfolio/img-1.jpg' %}" alt="" />
+                        <div class="single-content">
+                            <div class="fancy-table">
+                                <div class="table-cell">
+                                    <div class="zoom-icon">
+                                        <a href="{% static 'img/portfolio/img-1.jpg' %}" data-fancybox="#gallery"><i
+                                                class="lni-zoom-in item-icon"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 mix development print">
+                <div class="portfolio-item">
+                    <div class="shot-item">
+                        <img src="{% static 'img/portfolio/img-1.jpg' %}" alt="" />
+                        <div class="single-content">
+                            <div class="fancy-table">
+                                <div class="table-cell">
+                                    <div class="zoom-icon">
+                                        <a href="{% static 'img/portfolio/img-1.jpg' %}" data-fancybox="#gallery"><i
+                                                class="lni-zoom-in item-icon"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 mix development print">
+                <div class="portfolio-item">
+                    <div class="shot-item">
+                        <img src="{% static 'img/portfolio/img-1.jpg' %}" alt="" />
+                        <div class="single-content">
+                            <div class="fancy-table">
+                                <div class="table-cell">
+                                    <div class="zoom-icon">
+                                        <a href="{% static 'img/portfolio/img-1.jpg' %}" data-fancybox="#gallery"><i
+                                                class="lni-zoom-in item-icon"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 mix development print">
+                <div class="portfolio-item">
+                    <div class="shot-item">
+                        <img src="{% static 'img/portfolio/img-1.jpg' %}" alt="" />
+                        <div class="single-content">
+                            <div class="fancy-table">
+                                <div class="table-cell">
+                                    <div class="zoom-icon">
+                                        <a href="{% static 'img/portfolio/img-1.jpg' %}" data-fancybox="#gallery"><i
+                                                class="lni-zoom-in item-icon"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 mix development print">
+                <div class="portfolio-item">
+                    <div class="shot-item">
+                        <img src="{% static 'img/portfolio/img-1.jpg' %}" alt="" />
+                        <div class="single-content">
+                            <div class="fancy-table">
+                                <div class="table-cell">
+                                    <div class="zoom-icon">
+                                        <a href="{% static 'img/portfolio/img-1.jpg' %}" data-fancybox="#gallery"><i
+                                                class="lni-zoom-in item-icon"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 mix development print">
+                <div class="portfolio-item">
+                    <div class="shot-item">
+                        <img src="{% static 'img/portfolio/img-1.jpg' %}" alt="" />
+                        <div class="single-content">
+                            <div class="fancy-table">
+                                <div class="table-cell">
+                                    <div class="zoom-icon">
+                                        <a href="{% static 'img/portfolio/img-1.jpg' %}" data-fancybox="#gallery"><i
+                                                class="lni-zoom-in item-icon"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 mix development print">
+                <div class="portfolio-item">
+                    <div class="shot-item">
+                        <img src="{% static 'img/portfolio/img-1.jpg' %}" alt="" />
+                        <div class="single-content">
+                            <div class="fancy-table">
+                                <div class="table-cell">
+                                    <div class="zoom-icon">
+                                        <a href="{% static 'img/portfolio/img-1.jpg' %}" data-fancybox="#gallery"><i
+                                                class="lni-zoom-in item-icon"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 mix development print">
+                <div class="portfolio-item">
+                    <div class="shot-item">
+                        <img src="{% static 'img/portfolio/img-1.jpg' %}" alt="" />
+                        <div class="single-content">
+                            <div class="fancy-table">
+                                <div class="table-cell">
+                                    <div class="zoom-icon">
+                                        <a href="{% static 'img/portfolio/img-1.jpg' %}" data-fancybox="#gallery"><i
+                                                class="lni-zoom-in item-icon"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 mix development print">
+                <div class="portfolio-item">
+                    <div class="shot-item">
+                        <img src="{% static 'img/portfolio/img-1.jpg' %}" alt="" />
+                        <div class="single-content">
+                            <div class="fancy-table">
+                                <div class="table-cell">
+                                    <div class="zoom-icon">
+                                        <a href="{% static 'img/portfolio/img-1.jpg' %}" data-fancybox="#gallery"><i
+                                                class="lni-zoom-in item-icon"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 mix development print">
+                <div class="portfolio-item">
+                    <div class="shot-item">
+                        <img src="{% static 'img/portfolio/img-1.jpg' %}" alt="" />
+                        <div class="single-content">
+                            <div class="fancy-table">
+                                <div class="table-cell">
+                                    <div class="zoom-icon">
+                                        <a href="{% static 'img/portfolio/img-1.jpg' %}" data-fancybox="#gallery"><i
+                                                class="lni-zoom-in item-icon"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 mix development print">
+                <div class="portfolio-item">
+                    <div class="shot-item">
+                        <img src="{% static 'img/portfolio/img-1.jpg' %}" alt="" />
+                        <div class="single-content">
+                            <div class="fancy-table">
+                                <div class="table-cell">
+                                    <div class="zoom-icon">
+                                        <a href="{% static 'img/portfolio/img-1.jpg' %}" data-fancybox="#gallery"><i
+                                                class="lni-zoom-in item-icon"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <a href="#" class="btn btn-common btn-effect">Смотреть все фото</a>
+        </div>
+    </div>
+    <!-- Container Ends -->
+</section>
+<!-- Галерея конец -->
+
+<!-- Видео начало -->
+<section id="videos" class="section">
+    <!-- Container Starts -->
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Видео</h2>
+            <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos debitis.
+            </p>
+        </div>
+
+        <!-- Portfolio Recent Projects -->
+        <div class="row">
+            <div class=" video-content col-lg-4 col-md-6 col-xs-12 mix development print">
+                <iframe class="yotube" src="https://www.youtube.com/embed/IZUuOHvY_FQ" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class=" video-content col-lg-4 col-md-6 col-xs-12 mix development print">
+                <iframe class="yotube" src="https://www.youtube.com/embed/IZUuOHvY_FQ" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class=" video-content col-lg-4 col-md-6 col-xs-12 mix development print">
+                <iframe class="yotube" src="https://www.youtube.com/embed/IZUuOHvY_FQ" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- Container Ends -->
+</section>
+<!-- Видео конец -->
+
+
+<!-- Баннер 2 начало -->
+<section id="cta" class="section" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="cta-text">
+                    <h5>Stil confused? Download a free lite version to get started!</h5>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12 text-right">
+                <a href="#" class="btn btn-border">Download</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Баннер 2 конец -->
+
+<!-- Партнеры начало -->
+<div id="clients" class="section">
+    <!-- Container Ends -->
+    <div class="container">
+        <!-- Row and Scroller Wrapper Starts -->
+        <div class="row" id="clients-scroller">
+            <div class="client-item-wrapper">
+                <img src="{% static 'img/clients/img1.png' %}" alt="">
+            </div>
+            <div class="client-item-wrapper">
+                <img src="{% static 'img/clients/img2.png' %}" alt="">
+            </div>
+            <div class="client-item-wrapper">
+                <img src="{% static 'img/clients/img3.png' %}" alt="">
+            </div>
+            <div class="client-item-wrapper">
+                <img src="{% static 'img/clients/img4.png' %}" alt="">
+            </div>
+            <div class="client-item-wrapper">
+                <img src="{% static 'img/clients/img5.png' %}" alt="">
+            </div>
+            <div class="client-item-wrapper">
+                <img src="{% static 'img/clients/img6.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Партнеры конец -->
+
+
+
+{% endblock content %}

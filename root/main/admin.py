@@ -1,17 +1,38 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import Contacts, Gallery, News, Partners, Prices
+from .models import About, Contacts, Gallery, News, Order, Partners, Prices
 
-
+@admin.register(About)
+class AboutAdmin(admin.ModelAdmin):   
+    list_display = ('title',)
+    list_display_links = ('title',)
+    fields = ('title', 'text_1', 'text_2', 'text_3', 'image_1', 'image_2', 'get_img', 'get_img_2')
+    readonly_fields = ('get_img', 'get_img_2')
+    
+    def get_img(self, obj):
+        if obj.image_1:
+            return mark_safe(f'<img src="{obj.image_1.url}" width="88px">')
+        else:
+            return 'нет картинки'
+        
+    def get_img_2(self, obj):
+        if obj.image_2:
+            return mark_safe(f'<img src="{obj.image_2.url}" width="88px">')
+        else:
+            return 'нет картинки'
+        
+    get_img.short_description = 'Миниатюра 1'
+    get_img_2.short_description = 'Миниатюра 2'
+    
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'date', 'get_img', 'url', 'draft')
+    list_display = ('title', 'date', 'get_img', 'draft')
     list_display_links = ('title', )
     list_filter = ('title', 'date',)
     list_editable = ('draft',)
     actions = ['publish', 'unpublish']    
-    fields = ('title', 'anons', 'text', 'date', 'image', 'get_img', 'url', 'draft')
+    fields = ('title', 'anons', 'text', 'date', 'image', 'get_img', 'draft')
     readonly_fields = ('get_img', )
     save_on_top = True
     save_as = True 
@@ -95,6 +116,16 @@ class PartnersAdmin(admin.ModelAdmin):
             return 'нет картинки'
         
     get_img.short_description = 'Миниатюра'
+    
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('name', 'number', 'email', 'data', 'comment')
+    list_display_links = ('name', 'number', 'email')
+    list_filter = ('data', 'name', 'number', 'email')
+    list_per_page = 10
+    list_max_show = 100
+    fields = ('name', 'number', 'email', 'data', 'comment')
+    readonly_fields = ('data',)
 
 admin.site.register(Contacts)
 

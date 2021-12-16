@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
-from main import views
 from django.conf.urls.static import static
 from django.conf import settings
 from .settings import DEBUG
@@ -24,7 +23,7 @@ from .settings import DEBUG
 urlpatterns = [
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('admin/', admin.site.urls),
-    path('', views.main_list, name='main_list'),
+    path('', include('main.urls')),
 ]
 
 if DEBUG:

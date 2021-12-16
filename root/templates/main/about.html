@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} О нас {% endblock title %}
+{% block content %}
+
+<section id="about" class="section">
+    <!-- Описание парка -->
+    {% for el in about %}
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">{{ el.title }}</h2>
+            <p class="section-subtitle">{{ el.text_1 }}</p>
+        </div>
+        <div class="about-main row">
+            <div class="col-lg-6 col-md-12 col-xs-12">
+                <div class="about-text">
+                    <p>{{ el.text_2 }}</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-xs-12">
+                <div class="about-image">
+                    <!-- <img src="{% static 'img/about/img-1.jpg' %}" alt=""> -->
+                    <img src="{{ el.image_1.url }}" width="550" height="400" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="about-second row mt-5">
+            <div class="col-lg-6 col-md-12 col-xs-12">
+                <div class="about-image">
+                    <!-- <img src="{% static 'img/about/img-1.jpg' %}" alt=""> -->
+                    <img src="{{ el.image_2.url }}" width="550" height="400" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-xs-12">
+                <div class="about-text">
+                    <p>{{ el.text_3 }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Описание парка конец -->
+    {% endfor %}
+</section>
+
+<div class="d-flex justify-content-center mt-4">
+    <a href="{% url 'index' %}" class="btn btn-common price-btn btn-effect">На главную</a>
+</div>
+
+{% endblock content %}

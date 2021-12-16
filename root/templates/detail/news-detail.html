@@ -1,0 +1,30 @@
+
+    <!-- Блог начало -->
+    <section id="blog" class="section">
+        <!-- Container Starts -->
+        {% for el in news %}
+        <div class="container">
+          <div class="section-header">          
+            <h2 class="section-title">{{ el.anons }}</h2>
+            <div class="date-details"><i class="lni-calendar"></i>{{ el.date }}</div>
+           <div class="blog-details">
+            <div class="blog-details-banner">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <img src="{{ el.image.url }}" alt="">
+                </div>
+            </div>
+            <div class="blog-details-text mt-5">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <p>{{ el.text }}</p>
+                </div>
+            </div>
+            <div class="blog-details-pagination mt-5">
+                <a href="#" class="btn btn-common price-btn btn-effect">&laquo;Предыдущая</a>
+                <a href="#" class="btn btn-common price-btn btn-effect">Следующая&raquo;</a>
+            </div>
+           </div>
+          </div>
+          
+        </div>
+      </section>
+      <!-- Блог конец -->

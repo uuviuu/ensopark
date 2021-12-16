@@ -1,8 +1,23 @@
 from django.db import models
 from django.urls import reverse
 
-from datetime import date
+from datetime import date, datetime
 
+class About(models.Model):
+    """О нас"""
+    title = models.CharField("Заголовок", max_length=50)
+    text_1 = models.CharField("Основная информация", max_length=200)
+    text_2 = models.TextField("Текст 1")
+    text_3 = models.TextField("Текст 2")
+    image_1 = models.ImageField("Изображение 1", upload_to="about/")
+    image_2 = models.ImageField("Изображение 2", upload_to="about/")
+    
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Информация'
+        verbose_name_plural = 'О нас'   
 
 class News(models.Model):
     """Новости на сайте"""
@@ -11,8 +26,7 @@ class News(models.Model):
     text = models.TextField('Новость')
     image = models.ImageField("Изображение", upload_to="news/")
     date = models.DateField('Дата', default=date.today)
-    url = models.SlugField(max_length=130, unique=True,)
-    draft = models.BooleanField("Черновик", default=False)
+    draft = models.BooleanField("Публикация", default=False)
     
     def __str__(self):
         return self.title
@@ -26,10 +40,11 @@ class News(models.Model):
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
+        ordering = ["-date"]
 
 class Gallery(models.Model):
     """Галерея"""
-    title = models.CharField("Заголовок", max_length=50)
+    title = models.CharField("Заголовок", max_length=50, blank=True)
     season = models.CharField("Сезон", max_length=50)
     image = models.ImageField("Изображение", upload_to="gallery/")
     date = models.DateField('Дата', default=date.today)
@@ -80,7 +95,22 @@ class Contacts(models.Model):
 
     class Meta:
         verbose_name = 'Контакт'
-        verbose_name_plural = 'Контакты'      
+        verbose_name_plural = 'Контакты'
+
+ 
+class Order(models.Model):
+    data = models.DateTimeField('Дата и время заказа', default=datetime.now)
+    name = models.CharField('Имя', max_length=100)
+    number = models.CharField('Номер телефона', max_length=12)
+    email = models.EmailField('Email', max_length=100, blank=True)
+    comment = models.TextField('Комментарий', default='', blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Заказ'
+        verbose_name_plural = 'Заказы'
 
 
         
