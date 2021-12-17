@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Форма {% endblock title %}
+{% block content %}
+
+<div class="modal fade" id="modalBuy" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Мы поможем в выборе активности.</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12 form-line">
+                            <div class="form-group">
+                                    {{ form.name }}
+                            </div>
+                        </div>
+                        <div class="col-12 form-line">
+                            <div class="form-group">
+                                    {{ form.number }}
+                            </div>
+                        </div>
+                        <div class="col-12 form-line">
+                            <div class="form-group">
+                                    {{ form.email }}
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="submit" class="btn btn-common btn-effect">Отправить</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

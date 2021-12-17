@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-n236*v*x6hb5v0k^=q%0neocj=xvg0bcr7l@6gz)#eh-ej1g9u
 # Перед заливом на сервер исправить на False
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1',]
 
 
 # Application definition
@@ -66,7 +66,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # для сервер версии
-        # 'DIRS': [os.path.join(BASE_DIR, 'templates') ],
+        # 'DIRS': [os.path.join(BASE_DIR, 'templates')],
         # для дебаг версии
         'DIRS': ['templates'],
         'APP_DIRS': True,

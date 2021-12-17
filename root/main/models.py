@@ -21,18 +21,19 @@ class About(models.Model):
 
 class News(models.Model):
     """Новости на сайте"""
-    title = models.CharField('Заголовок', max_length=50)
+    title = models.CharField('Заголовок', max_length=50, help_text='Заголовок должен быть уникальныи, он будет служить для вас ориентиром в новостях и автоматически пропишется в URL')
     anons = models.CharField('Анонс', max_length=300)
     text = models.TextField('Новость')
-    image = models.ImageField("Изображение", upload_to="news/")
+    image = models.ImageField("Изображение", upload_to="news/",  help_text='Для корректного отображения на сайте, добавляйте горизонтальные изображения соотношением 2 к 1')
     date = models.DateField('Дата', default=date.today)
-    draft = models.BooleanField("Публикация", default=False)
+    draft = models.BooleanField("Публикация", default=True)
+    slug = models.SlugField("URL", max_length=50, unique=True, db_index=True, default='', help_text='URL для новости должен быть уникальным')
     
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("news", kwargs={"slug": self.url})
+        return reverse("news_detail", kwargs={"slug": self.slug})
 
     def get_review(self):
         return self.reviews_set.filter(parent__isnull=True)
@@ -60,6 +61,7 @@ class Partners(models.Model):
     """Партнеры"""
     partner = models.CharField("Партнер", max_length=100)
     image = models.ImageField("Изображение", upload_to="partners/")
+    adress = models.TextField('Ссылка на партнера', default='')
     
     def __str__(self):
         return self.partner
@@ -99,6 +101,7 @@ class Contacts(models.Model):
 
  
 class Order(models.Model):
+    """Заявки с сайта"""
     data = models.DateTimeField('Дата и время заказа', default=datetime.now)
     name = models.CharField('Имя', max_length=100)
     number = models.CharField('Номер телефона', max_length=12)
@@ -109,8 +112,8 @@ class Order(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Заказ'
-        verbose_name_plural = 'Заказы'
+        verbose_name = 'Заявка'
+        verbose_name_plural = 'Заявки'
 
 
         

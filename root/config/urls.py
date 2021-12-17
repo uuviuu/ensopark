@@ -24,7 +24,10 @@ urlpatterns = [
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
+    
 ]
+
+handler404 = "config.views.page_not_found_view"
 
 if DEBUG:
     urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

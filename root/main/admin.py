@@ -29,14 +29,15 @@ class AboutAdmin(admin.ModelAdmin):
 class NewsAdmin(admin.ModelAdmin):
     list_display = ('title', 'date', 'get_img', 'draft')
     list_display_links = ('title', )
-    list_filter = ('title', 'date',)
+    list_filter = ('date', 'draft')
     list_editable = ('draft',)
     actions = ['publish', 'unpublish']    
-    fields = ('title', 'anons', 'text', 'date', 'image', 'get_img', 'draft')
+    fields = ('title', 'anons', 'text', 'date', 'image', 'get_img', 'draft', 'slug')
     readonly_fields = ('get_img', )
     save_on_top = True
     save_as = True 
-        
+    prepopulated_fields =  {"slug": ("title",)}
+    
     def get_img(self, obj):
         if obj.image:
             return mark_safe(f'<img src="{obj.image.url}" width="88px">')
@@ -104,10 +105,10 @@ class GalleryAdmin(admin.ModelAdmin):
 
 @admin.register(Partners)
 class PartnersAdmin(admin.ModelAdmin):
-    list_display = ('partner', 'get_img')
+    list_display = ('partner', 'adress', 'get_img')
     list_display_links = ('partner', 'get_img')
-    fields = ('partner', 'image', 'get_img')
-    readonly_fields = ('get_img', )
+    fields = ('partner', 'adress', 'image', 'get_img')
+    readonly_fields = ('get_img',)
     
     def get_img(self, obj):
         if obj.image:

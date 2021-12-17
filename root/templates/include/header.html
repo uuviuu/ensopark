@@ -3,7 +3,7 @@
 <header id="slider-area">
     <nav class="navbar navbar-expand-md fixed-top scrolling-navbar bg-white">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
+            <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="lni-menu"></i>
@@ -91,9 +91,10 @@
                 </div> -->
                 <div class="col-lg-6 col-md-12  col-xs-12">
                     <div class="active-buttons">
-                        <button class="header-down-btn btn btn-common btn-effect">Пополнить валюту</button>
-                        <button class="appointment-btn header-down-btn btn btn-common btn-effect">Записаться к
-                            инструктору</button>
+                        <!-- <button class="header-down-btn btn btn-common btn-effect">Пополнить валюту</button> -->
+                        <button href="#" class="appointment-btn header-down-btn btn btn-common btn-effect">
+                            Записаться к инструктору
+                        </button>
                     </div>
                 </div>
             </div>
@@ -102,3 +103,75 @@
     <!-- График конец -->
 </header>
 <!-- Шапка конец -->
+
+<!-- Модалка записаться -->
+<div class="modal fade" id="modalBuy" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Мы поможем в выборе активности.</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12 form-line">
+                            <div class="form-group">
+                                    {{ form.name }}
+                            </div>
+                        </div>
+                        <div class="col-12 form-line">
+                            <div class="form-group">
+                                    {{ form.number }}
+                            </div>
+                        </div>
+                        <div class="col-12 form-line">
+                            <div class="form-group">
+                                    {{ form.email }}
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="submit" class="btn btn-common btn-effect">Отправить</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="modal fade" id="modalBuy" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Мы поможем в выборе активности.</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'index' %}" method="POST">
+                    {% csrf_token %} 
+                    <div class="row">
+                        <div class="col-12 form-line">
+                            <div class="form-group">
+                                <input id="name" type="text" class="form-control" required name="email"
+                                    placeholder="Имя">
+                                    
+                            </div>
+                        </div>
+                        <div class="col-md-12 form-line">
+                            <div class="form-group">
+                                <input id="phone" type="tel" class="form-control" pattern="[0-9]{+}" required
+                                    minlength="12" maxlength="12" name="phone" placeholder="Номер телефона">
+                                    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="submit" class="btn btn-common btn-effect">Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->

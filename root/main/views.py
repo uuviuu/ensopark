@@ -1,65 +1,163 @@
 from django.core.paginator import Paginator
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
 
 from .models import About, Contacts, Gallery, News, Order, Partners, Prices
-
+from .forms import *
     
-class IndexView(View):
+
+def index(request):
     """Главная"""
-    def get(self, request):
-        return render(request, 'main/index.html')
+    contact_list = News.objects.filter(draft=True)
+    paginator = Paginator(contact_list, 3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     
-class AboutView(View):
-    """О нас"""
-    def get(self, request):
-        about = About.objects.all()
-        return render(request, 'main/about.html', {'about': about})
+    partners = Partners.objects.all()
     
-class NewsView(ListView):
-    """Новости"""
-    def get(self, request):
-        contact_list = News.objects.filter(draft=True)
-        paginator = Paginator(contact_list, 3)
+    if request.method == 'POST':
+        form = AddPageForm(request.POST)
+        if form.is_valid(): 
+            form.save()
+            return redirect('index')
+    else:
+        form = AddPageForm()
         
-        page_number = request.GET.get('page')
-        page_obj = paginator.get_page(page_number)
-        return render(request, 'main/news_list.html', {'page_obj': page_obj})
-        
-    # model = News
-    # paginate_by = 3
-    # template_name = 'main/news.html'
-    # context_object_name = 'posts'
-    
-    # def get_queryset(self):
-    #     return News.objects.filter(draft=False)
-    
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     return dict(list(context.items()))
-    
-class NewsDetailView(ListView):
-    """Страница с новостью"""
-    model = News
-    
-    def get(self, request):
-        queryset = News.objects.filter(draft=False)
-        return render(request, 'main/news.html', {'news': queryset})
-    
+    return render(request, 'main/index.html', {'form': form, 'page_obj': page_obj, 'partners': partners,})
 
+def about(request):
+    """О нас"""
+    about = About.objects.all()
+    
+    if request.method == 'POST':
+        form = AddPageForm(request.POST)
+        if form.is_valid(): 
+            form.save()
+            return redirect('about')
+    else:
+        form = AddPageForm()
+        
+    return render(request, 'main/about.html', {'about': about, 'form': form})
+
+def news(request):
+    """Новости"""
+    
+    if request.method == 'POST':
+        form = AddPageForm(request.POST)
+        if form.is_valid(): 
+            form.save()
+            return redirect('news')
+    else:
+        form = AddPageForm()
+    
+    contact_list = News.objects.filter(draft=True)
+    paginator = Paginator(contact_list, 3)
+        
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+        
+    return render(request, 'main/news_list.html', {'page_obj': page_obj, 'form': form})
+
+def newsdetail(request, slug):
+    """Страница с новостью"""
+    
+    if request.method == 'POST':
+        form = AddPageForm(request.POST)
+        if form.is_valid(): 
+            form.save()
+            return redirect('about')
+    else:
+        form = AddPageForm()
+        
+    news = News.objects.filter(draft=True).get(slug=slug)
+    return render(request, 'main/news_detail.html', {'news': news, 'form': form})   
+ 
+def gallery(request):
+    """Галерея"""
+    gallery = Gallery.objects.all()
+    
+    if request.method == 'POST':
+        form = AddPageForm(request.POST)
+        if form.is_valid(): 
+            form.save()
+            return redirect('about')
+    else:
+        form = AddPageForm()
+        
+    return render(request, 'main/gallery.html', {'gallery': gallery, 'form': form})
+ 
     
 class PriceView(View):
     """Цены"""
     def get(self, request):
         return render(request, 'main/price.html')
     
-class GalleryView(View):
-    """Галерея"""
-    def get(self, request):
-        return render(request, 'main/gallery.html')
+# class GalleryView(View):
+#     """Галерея"""
+#     def get(self, request):
+#         return render(request, 'main/gallery.html')
     
 class ContactsView(View):
     """Контакты"""
     def get(self, request):
         return render(request, 'main/contacts.html')
+    
+    
+
+
+    
+
+        
+# class IndexView(View):
+#     """Главная"""
+#     def get(self, request):
+#         if request.method == 'POST':
+#             form = AddPageForm(request.POST)
+#             if form.is_valid(): 
+#                 form.save()
+#                 return redirect('index')
+#         else:
+#             form = AddPageForm()
+#         return render(request, 'main/index.html', {'form': form})
+
+# class AboutView(View):
+#     """О нас"""
+#     def get(self, request):
+#         about = About.objects.all()
+#         if request.method == 'POST':
+#             form = AddPageForm(request.POST)
+#             if form.is_valid(): 
+#                 form.save()
+#                 return redirect('about')
+#         else:
+#             form = AddPageForm()
+#         return render(request, 'main/about.html', {'about': about, 'form': form})
+
+# class NewsView(ListView):
+#     """Новости"""
+#     def get(self, request):
+        
+#         if request.method == 'POST':
+#             form = AddPageForm(request.POST)
+#             if form.is_valid(): 
+#                 form.save()
+#                 return redirect('news')
+#         else:
+#             form = AddPageForm()
+            
+#         contact_list = News.objects.filter(draft=True)
+#         paginator = Paginator(contact_list, 3)
+        
+#         page_number = request.GET.get('page')
+#         page_obj = paginator.get_page(page_number)
+#         return render(request, 'main/news_list.html', {'page_obj': page_obj, 'form': form})
+
+# class NewsDetailView(View):
+#     """Страница с новостью"""
+#     model = News
+#     slug_field = "slug"
+    
+#     def get(self, request, slug):
+#         news = News.objects.filter(draft=True).get(slug=slug)
+#         return render(request, 'main/news_detail.html', {'news': news})   
