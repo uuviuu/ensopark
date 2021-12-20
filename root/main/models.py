@@ -68,17 +68,23 @@ class Partners(models.Model):
         
 class Prices(models.Model):
     """Цены на летнике виды услуг"""
+    
     title = models.CharField("Услуга", max_length=50)
     season = models.CharField("Сезон", max_length=50)
     description = models.TextField('Описание')
     price_ad = models.CharField("Цена взрослый", blank=True, max_length=50, help_text='Необязательное поле')
     price_ch = models.CharField("Цена детский", blank=True, max_length=50, help_text='Необязательное поле')
     subscription = models.CharField("Цена абонемент", blank=True, max_length=50, help_text='Необязательное поле, заполняется в случае единого ценника, например на абонемент')
-    image = models.ImageField("Изображение", upload_to="prices/")
+    # image = models.ImageField("Изображение", upload_to="prices/")
+    image = models.FileField("Изображение", upload_to="prices/", ) # validators=[validate_svg]
     
     def __str__(self):
         return self.title 
 
+    # def validate_svg(file, valid):
+    #     if not is_image(file):
+    #         raise ValidationError("File not svg")
+    
     class Meta:
         verbose_name = 'Цена'
         verbose_name_plural = 'Цены'

@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator
-from django.shortcuts import get_object_or_404, redirect, render
-from django.views.generic import ListView, DetailView
-from django.views.generic.base import View
+from django.shortcuts import redirect, render
+# from django.views.generic import ListView, DetailView
+# from django.views.generic.base import View
 
 from .models import About, Gallery, News, Partners, Prices
 from .forms import *
@@ -12,7 +12,8 @@ def index(request):
     paginator = Paginator(contact_list, 3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-
+    
+    prices = Prices.objects.all()
     partners = Partners.objects.all()
     gallery = Gallery.objects.order_by('-date')[:12]
 
@@ -24,7 +25,7 @@ def index(request):
     else:
         form = AddPageForm()                  
 
-    return render(request, 'main/index.html', { 'form': form, 'page_obj': page_obj, 'partners': partners, 'gallery': gallery, })
+    return render(request, 'main/index.html', { 'form': form, 'page_obj': page_obj, 'partners': partners, 'gallery': gallery, 'prices': prices })
 
 
 def about(request):

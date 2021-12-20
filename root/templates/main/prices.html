@@ -21,34 +21,66 @@
             </div>
         </div>
         <div class="activities">
+            <!-- Зимние активности начало -->
             <div class="activity-winter row">
                 <h1 class="activity-title col-lg-12">Подъемники</h1>
-                <!-- Start featured -->
                 {% for el in prices %}
+                {% if el.season == 'зима' %}
                 <div class="col-lg-4 col-md-6 col-xs-12">
                     <div class="featured-box">
-                        <div class="featured-icon winter">
-                            <img src="{{ el.image.url }}" width="90" height="90" alt="">
-                        </div>
-                       
                         <div class="featured-content">
+                            <div class="featured-icon winter">
+                                <img src="{{ el.image.url }}" width="90" height="90" alt="">
+                            </div>
                             <h4 class="winter">{{ el.title }}</h4>
                             <p>{{ el.description }}</p>
                             <div class="price mt-2">
                                 {% if el.price_ad and el.price_ch %}
-                                    <span class="price-adults winter">Взрослый: {{ el.price_ad }} Р</span><br>
-                                    <span class="price-kids winter">Детский: {{ el.price_ch }} Р</span>
+                                <span class="price-adults winter">Взрослый: {{ el.price_ad }} Р</span><br>
+                                <span class="price-kids winter">Детский: {{ el.price_ch }} Р</span>
                                 {% endif %}
                                 {% if el.subscription %}
-                                    <span class="price-adults winter"> {{ el.subscription }} Р</span><br>
+                                <span class="price-adults winter"> {{ el.subscription }} Р</span><br>
                                 {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
+                {% endif %}
                 {% endfor %}
-                <!-- End featured -->
             </div>
+
+            <!-- Зимние активности конец -->
+
+            <!-- Летние активности начало -->
+            <div class="activity-summer hidden row">
+                <h1 class="activity-title col-lg-12">Гребная база</h1>
+                {% for el in prices %}
+                {% if el.season == 'лето' %}
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <div class="featured-box">
+                        <div class="featured-content">
+                            <div class="featured-icon winter">
+                                <img src="{{ el.image.url }}" width="90" height="90" alt="">
+                            </div>
+                            <h4 class="summer">{{ el.title }}</h4>
+                            <p>{{ el.description }}</p>
+                            <div class="price mt-2">
+                                {% if el.price_ad and el.price_ch %}
+                                <span class="price-adults summer">Взрослый: {{ el.price_ad }} Р</span><br>
+                                <span class="price-kids summer">Детский: {{ el.price_ch }} Р</span>
+                                {% endif %}
+                                {% if el.subscription %}
+                                <span class="price-adults summer"> {{ el.subscription }} Р</span><br>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <!-- Летние активности конец -->
         </div>
     </div>
 </section>

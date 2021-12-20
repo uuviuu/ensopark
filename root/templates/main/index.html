@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} Главная {% endblock title %} 
+{% block title %} Главная {% endblock title %}
 
 {% block content %}
 
@@ -16,21 +16,21 @@
         <div class="row">
             {% for el in page_obj %}
 
-                <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
-                    <div class="blog-item-wrapper">
-                        <div class="blog-item-img">
-                            <a href="{{ el.get_absolute_url }}">
-                                <img src="{{ el.image.url }}" width="450" height="250" alt="">
-                            </a>
-                        </div>
-                        <div class="blog-item-text">
-                            <div class="date"><i class="lni-calendar"></i>{{ el.date }}</div>
-                            <h3><a href="{{ el.get_absolute_url }}">{{ el.title }}</a></h3>
-                            <p>{{ el.anons }}</p>
-                            <a href="{{ el.get_absolute_url }}" class="btn btn-common-blog mt-3 btn-effect">Подробнее</a>
-                        </div>
+            <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
+                <div class="blog-item-wrapper">
+                    <div class="blog-item-img">
+                        <a href="{{ el.get_absolute_url }}">
+                            <img src="{{ el.image.url }}" width="450" height="250" alt="">
+                        </a>
+                    </div>
+                    <div class="blog-item-text">
+                        <div class="date"><i class="lni-calendar"></i>{{ el.date }}</div>
+                        <h3><a href="{{ el.get_absolute_url }}">{{ el.title }}</a></h3>
+                        <p>{{ el.anons }}</p>
+                        <a href="{{ el.get_absolute_url }}" class="btn btn-common-blog mt-3 btn-effect">Подробнее</a>
                     </div>
                 </div>
+            </div>
 
             {% endfor %}
         </div>
@@ -45,24 +45,22 @@
 <section class="call-action section">
     <div class="container">
         <div class="section-header">
-                <div class="cta-trial text-center">
-                    <h2 class="section-title">СХЕМА КОМПЛЕКСА</h2>
-                    <p class="section-subtitle">Интерактивная схема комплекса откроется в новом окне</p>
-                    <a href="{% url 'index' %}" target="_blank" class="btn btn-common btn-effect">Интерактивная схема</a>
-                </div>
+            <div class="cta-trial text-center">
+                <h2 class="section-title">СХЕМА КОМПЛЕКСА</h2>
+                <p class="section-subtitle">Интерактивная схема комплекса откроется в новом окне</p>
+                <a href="{% url 'index' %}" target="_blank" class="btn btn-common btn-effect">Интерактивная схема</a>
+            </div>
         </div>
     </div>
 </section>
 <!-- Баннер 1 конец -->
 
 <!-- Активности начало -->
-<section id="services" class="section">
+<section id="features" class="section">
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">СПИСОК АКТИВНОСТЕЙ</h2>
-            <p class="section-subtitle">КАКОЙ ОТДЫХ ТЕБЕ ПО ДУШЕ
-            </p>
-            <!-- Переключатель начало -->
+            <p class="section-subtitle">КАКОЙ ОТДЫХ ТЕБЕ ПО ДУШЕ</p>
             <div class="toggle-radio">
                 <input type="radio" name="rdo" id="yes" checked>
                 <input type="radio" name="rdo" id="no">
@@ -72,172 +70,71 @@
                     <span></span>
                 </div>
             </div>
-            <!-- Переключатель конец -->
         </div>
         <div class="activities">
             <!-- Зимние активности начало -->
             <div class="activity-winter row">
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="item-boxes services-item">
-                        <div class="icon winter">
-                            <i class="lni-pencil"></i>
+                <h1 class="activity-title col-lg-12">Подъемники</h1>
+                {% for el in prices %}
+                {% if el.season == 'зима' %}
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <div class="featured-box">
+                        <div class="featured-content">
+                            <div class="featured-icon winter">
+                                <img src="{{ el.image.url }}" width="90" height="90" alt="">
+                            </div>
+                            <h4 class="winter">{{ el.title }}</h4>
+                            <p>{{ el.description }}</p>
+                            <!-- <div class="price mt-2">
+                                {% if el.price_ad and el.price_ch %}
+                                <span class="price-adults winter">Взрослый: {{ el.price_ad }} Р</span><br>
+                                <span class="price-kids winter">Детский: {{ el.price_ch }} Р</span>
+                                {% endif %}
+                                {% if el.subscription %}
+                                <span class="price-adults winter"> {{ el.subscription }} Р</span><br>
+                                {% endif %}
+                            </div> -->
                         </div>
-                        <h4 class="winter">Прокат инвентаря и ски-сервис</h4>
-                        <p>Прокат сноубордов и горных лыж.</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="item-boxes services-item" data-wow-delay="0.2s">
-                        <div class="icon winter">
-                            <i class="lni-cog"></i>
-                        </div>
-                        <h4 class="winter">Обучение</h4>
-                        <p>Опытные инструктора поставят на лыжи или сноуборд любого.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="item-boxes services-item" data-wow-delay="0.2s">
-                        <div class="icon winter">
-                            <i class="lni-stats-up"></i>
-                        </div>
-                        <h4 class="winter">Тюбинг</h4>
-                        <p>Любишь кататься - катайся, тюбинг поднимет подъемник.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="item-boxes services-item" data-wow-delay="0.2s">
-                        <div class="icon winter">
-                            <i class="lni-layers"></i>
-                        </div>
-                        <h4 class="winter">Снегоходы</h4>
-                        <p>Снегоходные прогулки по замерзшему озеру или по лесу.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="item-boxes services-item" data-wow-delay="0.2s">
-                        <div class="icon winter">
-                            <i class="lni-tab"></i>
-                        </div>
-                        <h4 class="winter">Детская школа</h4>
-                        <p>Детская горнолыжная школа для детей от 3-х лет</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="item-boxes services-item" data-wow-delay="0.2s">
-                        <div class="icon winter">
-                            <i class="lni-briefcase"></i>
-                        </div>
-                        <h4 class="winter">Склоны</h4>
-                        <p>Схема склонов и инфраструктуры экстрим-парка</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="item-boxes services-item" data-wow-delay="0.2s">
-                        <div class="icon winter">
-                            <i class="lni-briefcase"></i>
-                        </div>
-                        <h4 class="winter">Купить SKI-PASS</h4>
-                        <p>Купить или пополнить ваш ski-pass</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="item-boxes services-item" data-wow-delay="0.2s">
-                        <div class="icon winter">
-                            <i class="lni-briefcase"></i>
-                        </div>
-                        <h4 class="winter">Подарочные карты</h4>
-                        <p>Карта на услуги экстрим-парка с различным номиналом</p>
-                    </div>
-                </div>
+                {% endif %}
+                {% endfor %}
             </div>
+
             <!-- Зимние активности конец -->
+
             <!-- Летние активности начало -->
             <div class="activity-summer hidden row">
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="item-boxes services-item" data-wow-delay="0.2s">
-                        <div class="icon summer">
-                            <i class="lni-pencil"></i>
+                <h1 class="activity-title col-lg-12">Гребная база</h1>
+                {% for el in prices %}
+                {% if el.season == 'лето' %}
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <div class="featured-box">
+                        <div class="featured-content">
+                            <div class="featured-icon winter">
+                                <img src="{{ el.image.url }}" width="90" height="90" alt="">
+                            </div>
+                            <h4 class="summer">{{ el.title }}</h4>
+                            <p>{{ el.description }}</p>
+                            <!-- <div class="price mt-2">
+                                {% if el.price_ad and el.price_ch %}
+                                <span class="price-adults summer">Взрослый: {{ el.price_ad }} Р</span><br>
+                                <span class="price-kids summer">Детский: {{ el.price_ch }} Р</span>
+                                {% endif %}
+                                {% if el.subscription %}
+                                <span class="price-adults summer"> {{ el.subscription }} Р</span><br>
+                                {% endif %}
+                            </div> -->
                         </div>
-                        <h4 class="summer">Content Writing</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                            tincidunt ut.</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="item-boxes services-item " data-wow-delay="0.2s">
-                        <div class="icon summer">
-                            <i class="lni-cog"></i>
-                        </div>
-                        <h4 class="summer">Web Development</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                            tincidunt ut.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="item-boxes services-item " data-wow-delay="0.2s">
-                        <div class="icon summer">
-                            <i class="lni-stats-up"></i>
-                        </div>
-                        <h4 class="summer">Graphic Design</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                            tincidunt ut.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="item-boxes services-item" data-wow-delay="0.2s">
-                        <div class="icon summer">
-                            <i class="lni-layers"></i>
-                        </div>
-                        <h4 class="summer">UI/UX Design</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                            tincidunt ut.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="item-boxes services-item" data-wow-delay="0.2s">
-                        <div class="icon summer">
-                            <i class="lni-tab"></i>
-                        </div>
-                        <h4 class="summer">App Development</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                            tincidunt ut.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="item-boxes services-item" data-wow-delay="0.2s">
-                        <div class="icon summer">
-                            <i class="lni-briefcase"></i>
-                        </div>
-                        <h4 class="summer">Digital Marketing</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                            tincidunt ut.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="item-boxes services-item" data-wow-delay="0.2s">
-                        <div class="icon summer">
-                            <i class="lni-briefcase"></i>
-                        </div>
-                        <h4 class="summer">Digital Marketing</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                            tincidunt ut.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-xs-12">
-                    <div class="item-boxes services-item" data-wow-delay="0.2s">
-                        <div class="icon summer">
-                            <i class="lni-briefcase"></i>
-                        </div>
-                        <h4 class="summer">Digital Marketing</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                            tincidunt ut.</p>
-                    </div>
-                </div>
+                {% endif %}
+                {% endfor %}
             </div>
             <!-- Летние активности конец -->
-        </div>
-        <div class="d-flex justify-content-center mt-4">
-            <a href="#" class="price-btn btn btn-common btn-effect">Цены На Услуги</a>
+            <div class="d-flex justify-content-center mt-4">
+                <a href="{% url 'prices' %}" class="btn btn-common price-btn btn-effect">Цены на услуги</a>
+            </div>
         </div>
     </div>
 </section>
@@ -337,9 +234,10 @@
 <section class="section">
     <div class="container">
         <div class="section-header">
-                <div class="cta-trial text-center">
-                    <h2 class="section-title">ВСЕГДА БЕСПЛАТНО</h2>
-                    <p class="section-subtitle">Вход на территорию парка свободный. Для вас всегда открытое пространство для игровых видов спорта, комплекс турников, минирампа</p>
+            <div class="cta-trial text-center">
+                <h2 class="section-title">ВСЕГДА БЕСПЛАТНО</h2>
+                <p class="section-subtitle">Вход на территорию парка свободный. Для вас всегда открытое пространство для
+                    игровых видов спорта, комплекс турников, минирампа</p>
             </div>
         </div>
     </div>
