@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Цены {% endblock title %}
+{% block content %}
+
+<!-- Features Section Start -->
+<section id="features" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Цены на услуги Экстрим-Парка ENSOPARK</h2>
+            <p class="section-subtitle">ВСЕ ЦЕНЫ УКАЗАНЫ В РУБЛЯХ В БУДНИЙ / ВЫХОДНОЙ ДЕНЬ</p>
+            <div class="toggle-radio">
+                <input type="radio" name="rdo" id="yes" checked>
+                <input type="radio" name="rdo" id="no">
+                <div class="switch">
+                    <label for="yes">Зима</label>
+                    <label for="no">Лето</label>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <div class="activities">
+            <div class="activity-winter row">
+                <h1 class="activity-title col-lg-12">Подъемники</h1>
+                <!-- Start featured -->
+                {% for el in prices %}
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <div class="featured-box">
+                        <div class="featured-icon winter">
+                            <img src="{{ el.image.url }}" width="90" height="90" alt="">
+                        </div>
+                       
+                        <div class="featured-content">
+                            <h4 class="winter">{{ el.title }}</h4>
+                            <p>{{ el.description }}</p>
+                            <div class="price mt-2">
+                                {% if el.price_ad and el.price_ch %}
+                                    <span class="price-adults winter">Взрослый: {{ el.price_ad }} Р</span><br>
+                                    <span class="price-kids winter">Детский: {{ el.price_ch }} Р</span>
+                                {% endif %}
+                                {% if el.subscription %}
+                                    <span class="price-adults winter"> {{ el.subscription }} Р</span><br>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- End featured -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Features Section End -->
+
+
+{% endblock content %}

@@ -4,38 +4,35 @@
 {% block title %} Контакты {% endblock title %}
 {% block content %}
 
-<!-- Contact Section Start -->
+<!-- Контакты начало -->
 <section id="contact" class="section">
     <div class="contact-form">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Наши контакты</h2>
-                <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos
-                    debitis.</p>
+                <h2 class="section-title">НАШИ КОНТАКТЫ И СВЯЗЬ С НАМИ</h2>                
+                <p class="section-subtitle">Отправьте сообщение через контактную форму или воспользуйтесь указанными способами связи</p>
             </div>
             <div class="row d-flex align-items-center">
                 <div class="col-lg-9 col-md-9 col-xs-12">
                     <div class="contact-block">
-                        <form id="contactForm">
+                        <form action="#" method="POST">
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="name" name="name"
-                                            placeholder="Ваше имя" required data-error="Введите ваше имя">
+                                        {{ contacts.name }}
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" placeholder="Ваш Email" id="email" class="form-control"
-                                            name="name" required data-error="Введите ваш email">
+                                        {{ contacts.email }}
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <textarea class="form-control" id="message" placeholder="Сообщение"
-                                            rows="7"></textarea>
+                                        {{ contacts.description }}
                                         <div class="help-block with-errors"></div>
                                     </div>
                                     <div class="submit-button">
@@ -56,24 +53,24 @@
                             <div class="contact-info">
                                 <i class="lni-map"></i>
                                 <h5>Адрес</h5>
-                                <p>1900 Pico Blvd, New York br Centernial, colorado</p>
+                                <p>​Деревня Бутырки, 11 ст1</p>
+                                <p>д. Бутырки, Приморский район, Архангельская область</p>
                             </div>
-                            <!-- Content Info -->
                             <div class="contact-info">
                                 <i class="lni-star"></i>
                                 <h5>E-mail</h5>
-                                <p>info@example.com</p>
+                                <p>arh.wake@gmail.com</p>
                             </div>
-                            <!-- Content Info -->
                             <div class="contact-info">
                                 <i class="lni-phone"></i>
                                 <h5>Телефон</h5>
-                                <p>+48 123 456 789</p>
+                                <p>+7 (911) 594-52-52</p>
                             </div>
                             <!-- Icon -->
                             <ul class="footer-social">
-                                <li><a class="facebook" href="#"><i class="lni-instagram-filled"></i></a></li>
-                                <li><a class="twitter" href="#"><i class="lni-instagram-filled"></i></a></li>
+                                <li><a class="facebook" href="https://vk.com/arhwake"><i class="lni-instagram-filled"></i></a></li>
+                                <li><a class="twitter" href="https://www.instagram.com/ensopark_arh/"><i class="lni-instagram-filled"></i></a></li>
+                                <li><a class="" href="https://2gis.ru/arkhangelsk/firm/70000001018990004?m=40.565832%2C64.505655%2F15.11"><i class="lni-instagram-filled"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -82,10 +79,7 @@
         </div>
     </div>
 </section>
-<!-- Contact Section End -->
+<!-- Контакты конец -->
 
-<div class="d-flex justify-content-center mt-4">
-    <a href="{% url 'index' %}" class="btn btn-common price-btn btn-effect">На главную</a>
-</div>
 
 {% endblock content %}

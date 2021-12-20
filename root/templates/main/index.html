@@ -1,38 +1,41 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} Главная {% endblock title %}
+{% block title %} Главная {% endblock title %} 
+
 {% block content %}
+
 
 <!-- Блог начало -->
 <section id="blog" class="section">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">Новости</h2>
+            <h2 class="section-title">НОВОСТИ</h2>
+            <p class="section-subtitle">АКТУАЛЬНАЯ ИНФОРМАЦИЯ О ПАРКЕ</p>
         </div>
         <div class="row">
             {% for el in page_obj %}
 
-            <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
-                <div class="blog-item-wrapper">
-                    <div class="blog-item-img">
-                        <a href="{{ el.get_absolute_url }}">
-                            <img src="{{ el.image.url }}" width="450" height="250" alt="">
-                        </a>
-                    </div>
-                    <div class="blog-item-text">
-                        <div class="date"><i class="lni-calendar"></i>{{ el.date }}</div>
-                        <h3><a href="single-post.html">{{ el.anons }}</a></h3>
-                        <p>{{ el.text }}</p>
-                        <a href="{{ el.get_absolute_url }}" class="btn btn-common-blog mt-3 btn-effect">Подробнее</a>
+                <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
+                    <div class="blog-item-wrapper">
+                        <div class="blog-item-img">
+                            <a href="{{ el.get_absolute_url }}">
+                                <img src="{{ el.image.url }}" width="450" height="250" alt="">
+                            </a>
+                        </div>
+                        <div class="blog-item-text">
+                            <div class="date"><i class="lni-calendar"></i>{{ el.date }}</div>
+                            <h3><a href="{{ el.get_absolute_url }}">{{ el.title }}</a></h3>
+                            <p>{{ el.anons }}</p>
+                            <a href="{{ el.get_absolute_url }}" class="btn btn-common-blog mt-3 btn-effect">Подробнее</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
             {% endfor %}
         </div>
         <div class="d-flex justify-content-center mt-5">
-            <a href="{% url 'news' %}" class="btn btn-common btn-effect">Все новости</a>
+            <a href="{% url 'news' %}" class="btn btn-common btn-effect">Все Новости</a>
         </div>
     </div>
 </section>
@@ -41,15 +44,12 @@
 <!-- Баннер 1 начало -->
 <section class="call-action section">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-10">
+        <div class="section-header">
                 <div class="cta-trial text-center">
-                    <h3>Are You Ready To Get Started?</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod<br> Lorem
-                        ipsum dolor sit amet, consectetuer</p>
-                    <a href="#" class="btn btn-common btn-effect">Purchase Now!</a>
+                    <h2 class="section-title">СХЕМА КОМПЛЕКСА</h2>
+                    <p class="section-subtitle">Интерактивная схема комплекса откроется в новом окне</p>
+                    <a href="{% url 'index' %}" target="_blank" class="btn btn-common btn-effect">Интерактивная схема</a>
                 </div>
-            </div>
         </div>
     </div>
 </section>
@@ -60,7 +60,8 @@
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">СПИСОК АКТИВНОСТЕЙ</h2>
-            <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy</p>
+            <p class="section-subtitle">КАКОЙ ОТДЫХ ТЕБЕ ПО ДУШЕ
+            </p>
             <!-- Переключатель начало -->
             <div class="toggle-radio">
                 <input type="radio" name="rdo" id="yes" checked>
@@ -236,7 +237,7 @@
             <!-- Летние активности конец -->
         </div>
         <div class="d-flex justify-content-center mt-4">
-            <a href="#" class="price-btn btn btn-common btn-effect">Цены на услуги</a>
+            <a href="#" class="price-btn btn btn-common btn-effect">Цены На Услуги</a>
         </div>
     </div>
 </section>
@@ -244,27 +245,23 @@
 
 <!-- Галерея начало -->
 <section id="portfolios" class="section">
-    <!-- Container Starts -->
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">Галерея</h2>
-            <!-- <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos debitis.
-            </p> -->
+            <h2 class="section-title">ГАЛЕРЕЯ</h2>
+            <p class="section-subtitle">ФОТОГАЛЕРЕЯ ПАРКА</p>
         </div>
-
-
-        <!-- Portfolio Recent Projects -->
         <div id="gallery" class="row">
+            {% for img in gallery %}
             <!-- элемент картинки начало -->
             <div class="col-lg-3 col-md-6 col-xs-12 mix development print">
                 <div class="portfolio-item">
                     <div class="shot-item">
-                        <img src="{% static 'img/portfolio/img-1.jpg' %}" alt="" />
+                        <img src="{{ img.image.url }}" alt="">
                         <div class="single-content">
                             <div class="fancy-table">
                                 <div class="table-cell">
                                     <div class="zoom-icon">
-                                        <a href="{% static 'img/portfolio/img-1.jpg' %}" data-fancybox="#gallery"><i
+                                        <a href="{{ img.image.url }}" data-fancybox="#gallery"><i
                                                 class="lni-zoom-in item-icon"></i></a>
                                     </div>
                                 </div>
@@ -274,26 +271,25 @@
                 </div>
             </div>
             <!-- элемент картинки конец -->
-        </div>
-        <div class="d-flex justify-content-center mt-4">
-            <a href="#" class="btn btn-common btn-effect">Смотреть все фото</a>
+            {% endfor %}
         </div>
     </div>
-    <!-- Container Ends -->
+    <div class="d-flex justify-content-center mt-4">
+        <a href="{% url 'gallery' %}" class="btn btn-common btn-effect">Смотреть Все Фото</a>
+    </div>
+    </div>
 </section>
 <!-- Галерея конец -->
 
 <!-- Видео начало -->
 <section id="videos" class="section">
-    <!-- Container Starts -->
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">Видео</h2>
-            <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos debitis.
-            </p>
+            <h2 class="section-title">ВИДЕО</h2>
+            <!-- <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos debitis.
+            </p> -->
         </div>
 
-        <!-- Portfolio Recent Projects -->
         <div class="row">
             <div class=" video-content col-lg-4 col-md-6 col-xs-12 mix development print">
                 <iframe class="yotube" src="https://www.youtube.com/embed/IZUuOHvY_FQ" title="YouTube video player"
@@ -315,13 +311,69 @@
             </div>
         </div>
     </div>
-    <!-- Container Ends -->
 </section>
 <!-- Видео конец -->
 
+<!-- Партнеры начало -->
+<div id="clients" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">НАШИ ПАРТНЕРЫ</h2>
+            <p class="section-subtitle">И НАШИ ДРУЗЬЯ</p>
+        </div>
+        <!-- Вывод партнеров -->
+        <div class="row" id="clients-scroller">
+            {% for img in partners %}
+            <div class="client-item-wrapper">
+                <a href="{{ img.adress }}"><img src="{{ img.image.url }}" width="200" height="200" alt=""></a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Партнеры конец -->
 
 <!-- Баннер 2 начало -->
-<section id="cta" class="section" data-stellar-background-ratio="0.5">
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+                <div class="cta-trial text-center">
+                    <h2 class="section-title">ВСЕГДА БЕСПЛАТНО</h2>
+                    <p class="section-subtitle">Вход на территорию парка свободный. Для вас всегда открытое пространство для игровых видов спорта, комплекс турников, минирампа</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Баннер 2 конец -->
+{% endblock content %}
+
+
+
+<!-- Слайдер начало -->
+<!-- <div id="carousel-area">
+    <div id="carousel-slider" class="carousel slide carousel-fade" data-ride="carousel">
+    
+        <div class="carousel-inner" role="listbox">
+            {% for slide in slider_list %}
+            <div class="carousel-item {{ slide.css }}">
+                <img src="{{ slide.img.url }}" class="d-block w-100" alt="">
+            </div>
+            {% endfor %}
+        
+        <a class="carousel-control-prev" href="#carousel-slider" role="button" data-slide="prev">
+            <span class="carousel-control" aria-hidden="true"><i class="lni-chevron-left"></i></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-slider" role="button" data-slide="next">
+            <span class="carousel-control" aria-hidden="true"><i class="lni-chevron-right"></i></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div> -->
+<!-- Слайдер Конец -->
+
+<!-- Баннер 2 начало -->
+<!-- <section id="cta" class="section" data-stellar-background-ratio="0.5">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-xs-12">
@@ -334,25 +386,5 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- Баннер 2 конец -->
-
-<!-- Партнеры начало -->
-<div id="clients" class="section">
-    <!-- Container Ends -->
-    <div class="container">
-        <!-- Row and Scroller Wrapper Starts -->
-        <div class="row" id="clients-scroller">
-            {% for img in partners %}
-                <div class="client-item-wrapper">
-                    <a href="{{ img.adress }}"><img src="{{ img.image.url }}" width="200" height="200" alt=""></a>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
-<!-- Партнеры конец -->
-
-
-
-{% endblock content %}

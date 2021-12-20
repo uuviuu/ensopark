@@ -12,25 +12,25 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto w-100 justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link page-scroll active" href="{% url 'index' %}">Главная</a>
+                        <a class="nav-link page-scroll {% if request.path == '/' %}active{% endif %}" href="{% url 'index' %}">Главная</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="{% url 'about' %}">О нас</a>
+                        <a class="nav-link page-scroll {% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">О нас</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="{% url 'news' %}">Новости</a>
+                        <a class="nav-link page-scroll {% if request.path == '/news/' %}active{% endif %}" href="{% url 'news' %}">Новости</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="{% url 'price' %}">Цены</a>
+                        <a class="nav-link page-scroll {% if request.path == '/prices/' %}active{% endif %}" href="{% url 'prices' %}">Цены</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="{% url 'gallery' %}">Галерея</a>
+                        <a class="nav-link page-scroll {% if request.path == '/gallery/' %}active{% endif %}" href="{% url 'gallery' %}">Галерея</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="#team">Схема парка</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="{% url 'contacts' %}">Контакты</a>
+                        <a class="nav-link page-scroll {% if request.path == '/contacts/' %}active{% endif %}" href="{% url 'contacts' %}">Контакты</a>
                     </li>
                 </ul>
             </div>
@@ -47,13 +47,13 @@
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
-                    <img src="{% static 'img/slider/slider1.png' %}" alt="">
+                    <img src="{% static 'img/slider/ensopark.zCImV.jpg' %}" alt="">
                 </div>
                 <div class="carousel-item">
-                    <img src="{% static 'img/slider/bg-3.jpg' %}" alt="">
+                    <img src="{% static 'img/slider/ensopark.zCImV(2).jpg' %}" alt="">
                 </div>
                 <div class="carousel-item">
-                    <img src="{% static 'img/slider/bg-2.jpg' %}" alt="">
+                    <img src="{% static 'img/slider/ensopark.zCImV(3).jpg' %}" alt="">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carousel-slider" role="button" data-slide="prev">
@@ -75,9 +75,9 @@
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="time-work">
                         <h1 class="header-down-title">График работы</h1>
-                        <p class="work-time-content">Пн-Чт 10:00-21:00</p>
-                        <p class="work-time-content">Пн-Чт 10:00-21:00</p>
-                        <p class="work-time-content">Пн-Чт 10:00-21:00</p>
+                        <p class="work-time-content">Каждый день с 10:00 до 21:00</p>
+                        <!-- <p class="work-time-content">Пн-Чт 10:00-21:00</p>
+                        <p class="work-time-content">Пн-Чт 10:00-21:00</p> -->
                     </div>
                 </div>
                 <!-- <div class="col-lg-4 col-md-6  col-xs-12">
@@ -105,73 +105,4 @@
 <!-- Шапка конец -->
 
 <!-- Модалка записаться -->
-<div class="modal fade" id="modalBuy" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Мы поможем в выборе активности.</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form action="#" method="POST">
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-12 form-line">
-                            <div class="form-group">
-                                    {{ form.name }}
-                            </div>
-                        </div>
-                        <div class="col-12 form-line">
-                            <div class="form-group">
-                                    {{ form.number }}
-                            </div>
-                        </div>
-                        <div class="col-12 form-line">
-                            <div class="form-group">
-                                    {{ form.email }}
-                            </div>
-                        </div>
-                        <div class="modal-footer d-flex justify-content-center">
-                            <button type="submit" class="btn btn-common btn-effect">Отправить</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- <div class="modal fade" id="modalBuy" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Мы поможем в выборе активности.</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form action="{% url 'index' %}" method="POST">
-                    {% csrf_token %} 
-                    <div class="row">
-                        <div class="col-12 form-line">
-                            <div class="form-group">
-                                <input id="name" type="text" class="form-control" required name="email"
-                                    placeholder="Имя">
-                                    
-                            </div>
-                        </div>
-                        <div class="col-md-12 form-line">
-                            <div class="form-group">
-                                <input id="phone" type="tel" class="form-control" pattern="[0-9]{+}" required
-                                    minlength="12" maxlength="12" name="phone" placeholder="Номер телефона">
-                                    
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer d-flex justify-content-center">
-                        <button type="submit" class="btn btn-common btn-effect">Отправить</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
+{% include 'include/addpage.html' %}

@@ -30,6 +30,12 @@
     {% block content %}
 
     {% endblock content %}
+    {% if request.path != '/' %}
+    <div class="d-flex justify-content-center mt-4">
+        <a href="{% url 'index' %}" class="btn btn-common price-btn btn-effect">На главную</a>
+    </div>
+    {% endif %}
+    
     {% include 'include/footer.html' %}
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
