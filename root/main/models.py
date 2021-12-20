@@ -76,14 +76,11 @@ class Prices(models.Model):
     price_ch = models.CharField("Цена детский", blank=True, max_length=50, help_text='Необязательное поле')
     subscription = models.CharField("Цена абонемент", blank=True, max_length=50, help_text='Необязательное поле, заполняется в случае единого ценника, например на абонемент')
     # image = models.ImageField("Изображение", upload_to="prices/")
-    image = models.FileField("Изображение", upload_to="prices/", ) # validators=[validate_svg]
+    image = models.FileField("Изображение", upload_to="prices/", )
     
     def __str__(self):
         return self.title 
 
-    # def validate_svg(file, valid):
-    #     if not is_image(file):
-    #         raise ValidationError("File not svg")
     
     class Meta:
         verbose_name = 'Цена'
