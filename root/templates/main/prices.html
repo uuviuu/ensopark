@@ -30,10 +30,13 @@
                     <div class="featured-box">
                         <div class="featured-content">
                             <div class="featured-icon winter">
-                                <img src="{{ el.image.url }}" width="90" height="90" alt="">
+                                <a href="{{ el.get_absolute_url }}">
+                                    <img src="{{ el.image.url }}" width="90" height="90" alt="">
+                                </a>
                             </div>
-                            <h4 class="winter">{{ el.title }}</h4>
-                            <p>{{ el.description }}</p>
+                            <a href="{{ el.get_absolute_url }}">
+                                <h4 class="winter">{{ el.title }}</h4>
+                            </a>
                             <div class="price mt-2">
                                 {% if el.price_ad and el.price_ch %}
                                 <span class="price-adults winter">Взрослый: {{ el.price_ad }} Р</span><br>
@@ -60,11 +63,15 @@
                 <div class="col-lg-4 col-md-6 col-xs-12">
                     <div class="featured-box">
                         <div class="featured-content">
-                            <div class="featured-icon winter">
-                                <img src="{{ el.image.url }}" width="90" height="90" alt="">
+                            <div class="featured-icon summer">
+                                <a href="{{ el.get_absolute_url }}">
+                                    <img src="{{ el.image.url }}" width="90" height="90" alt="">
+                                </a>
                             </div>
-                            <h4 class="summer">{{ el.title }}</h4>
-                            <p>{{ el.description }}</p>
+                            <a href="{{ el.get_absolute_url }}">
+                                <h4 class="summer">{{ el.title }}</h4>
+                            </a>
+
                             <div class="price mt-2">
                                 {% if el.price_ad and el.price_ch %}
                                 <span class="price-adults summer">Взрослый: {{ el.price_ad }} Р</span><br>

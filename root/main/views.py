@@ -108,7 +108,20 @@ def prices(request):
 
     return render(request, 'main/prices.html', {'prices': prices, 'form': form})
 
+def pricedetail(request, slug):
+    """Страница с новостью"""
 
+    if request.method == 'POST':
+        form = AddPageForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('prices')
+    else:
+        form = AddPageForm()
+
+    prices = Prices.objects.all().get(slug=slug)
+    
+    return render(request, 'detail/price-details.html', {'prices': prices, 'form': form})
 
 def contacts(request):
     """Контакты"""

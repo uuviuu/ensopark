@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ prices.title }} {% endblock title %}
+{% block content %}
+
+{% if prices.season == 'лето' %}
+<!-- Блог лето -->
+<section id="blog" class="section">
+    <!-- Container Starts -->
+    <div class="container">
+        <div class="price-detail d-flex">
+            <div class="price-detail-photo">
+                <div class="col-lg-12">
+                    <img src="{{ prices.image_png.url }}" alt="">
+                </div>
+            </div>
+            <div class="price-detail-content">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <h1 class="activity-detail-title summer">{{ prices.title }} </h1>
+                    <p class="mt-3">{{ prices.description | safe }}</p>
+                    <div class="price mt-3">
+                        {% if prices.price_ad and prices.price_ch %}
+                        <span class="price-adults summer">Взрослый: {{ prices.price_ad }} Р</span><br>
+                        <span class="price-kids summer">Детский: {{ prices.price_ch }} Р</span>
+                        {% endif %}
+                        {% if el.subscription %}
+                        <span class="price-adults summer"> {{ prices.subscription }} Р</span><br>
+                        {% endif %}
+
+                    </div>
+                    <a href="{% url 'prices' %}"
+                        class="btn appointment-detail btn-common-summer price-btn btn-effect mt-4">
+                        Вернуться в раздел цены
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Блог конец -->
+{% endif %}
+
+{% if prices.season == 'зима' %}
+<!-- Блог зима -->
+<section id="blog" class="section">
+    <!-- Container Starts -->
+    <div class="container">
+        <div class="price-detail d-flex">
+            <div class="price-detail-photo">
+                <div class="col-lg-12">
+                    <img src="{{ prices.image_png.url }}" alt="">
+                </div>
+            </div>
+            <div class="price-detail-content">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <h1 class="activity-detail-title winter">{{ prices.title }}</h1>
+                    <p class="mt-3">{{ prices.description | safe }}</p>
+                    <div class="price mt-3">
+                        {% if prices.price_ad and prices.price_ch %}
+                        <span class="price-adults winter">Взрослый: {{ prices.price_ad }} Р</span><br>
+                        <span class="price-kids winter">Детский: {{ prices.price_ch }} Р</span>
+                        {% endif %}
+                        {% if prices.subscription %}
+                        <span class="price-adults winter"> {{ prices.subscription }} Р</span><br>
+                        {% endif %}
+                    </div>
+                    <a href="{% url 'prices' %}"
+                        class="btn appointment-detail btn-common-winter price-btn btn-effect mt-4">
+                        Вернуться в раздел цены
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Блог конец -->
+{% endif %}
+
+{% endblock content %}

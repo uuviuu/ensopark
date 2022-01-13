@@ -11,7 +11,13 @@ class NewsAdminForm(forms.ModelForm):
     class Meta:
         model = News
         fields = '__all__'
-
+        
+class PriceAdminForm(forms.ModelForm):
+    description = forms.CharField(label='Описание', widget=CKEditorUploadingWidget())
+    class Meta:
+        model = Prices
+        fields = '__all__'
+        
 @admin.register(About)
 class AboutAdmin(admin.ModelAdmin):   
     list_display = ('title',)
@@ -85,14 +91,20 @@ class PricesAdmin(admin.ModelAdmin):
     list_display = ('title', 'season', 'price_ad', 'price_ch', 'subscription', 'get_img')
     list_display_links = ('title', 'get_img', 'price_ad', 'price_ch', 'subscription', 'get_img')
     list_filter = ('title', 'season', ) 
-    fields = ('title', 'description', 'season', 'price_ad', 'price_ch', 'subscription', 'image', 'get_img')
+    fields = ('title', 'description', 'season', 'price_ad', 'price_ch', 'subscription', 'image_png', 'image', 'get_img', "slug")
+    form = PriceAdminForm
     readonly_fields = ('get_img', )
+    prepopulated_fields =  {"slug": ("title",)}
     
     def get_img(self, obj):
         if obj.image:
             return mark_safe(f'<img src="{obj.image.url}" width="88px">')
+        if obj.image_png:
+            return mark_safe(f'<img src="{obj.image_png.url}" width="200px">')
         else:
             return 'нет картинки'
+        
+  
         
     get_img.short_description = 'Миниатюра'
 

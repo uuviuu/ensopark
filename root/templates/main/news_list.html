@@ -13,15 +13,17 @@
         <div class="row">
             {% for el in page_obj %}
             <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
-                    <div class="blog-item-wrapper">
-                        <div class="blog-item-img">
-                            <a href="{{ el.get_absolute_url }}">
-                                <img src="{{ el.image.url }}" width="450" height="250" alt="">
-                            </a>
-                        </div>
+                <div class="blog-item-wrapper">
+                    <div class="blog-item-img">
+                        <a href="{{ el.get_absolute_url }}">
+                            <img src="{{ el.image.url }}" width="450" height="250" alt="">
+                        </a>
+                    </div>
                     <div class="blog-item-text">
                         <div class="date"><i class="lni-calendar"></i>{{ el.date }}</div>
-                        <h3><a href="{{ el.get_absolute_url }}">{{ el.title }}</a></h3>
+                        <a href="{{ el.get_absolute_url }}">
+                            <h3>{{ el.title }}</h3>
+                        </a>
                         <p>{{ el.anons }}</p>
                         <a href="{{ el.get_absolute_url }}" class="btn btn-common-blog mt-3 btn-effect">Подробнее</a>
                     </div>

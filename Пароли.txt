@@ -1,0 +1,18 @@
+пароль от админа сайта в kitstroy:
+agron
+808FrsKiEErL52
+
+вход в вирутальную среду на сервере:
+source /home/k/kitstroy/ensopark/public_html/myenv/bin/activate
+
+Домен - site45345.tw1.ru
+
+Хостинг
+https://hosting.timeweb.ru/login
+92.53.96.116
+kitstroy
+7PWweM22iUa5HDs0HP
+порт 22
+
+109.188.77.192 ip сервера
+

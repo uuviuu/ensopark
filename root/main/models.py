@@ -75,12 +75,18 @@ class Prices(models.Model):
     price_ad = models.CharField("Цена взрослый", blank=True, max_length=50, help_text='Необязательное поле')
     price_ch = models.CharField("Цена детский", blank=True, max_length=50, help_text='Необязательное поле')
     subscription = models.CharField("Цена абонемент", blank=True, max_length=50, help_text='Необязательное поле, заполняется в случае единого ценника, например на абонемент')
-    # image = models.ImageField("Изображение", upload_to="prices/")
-    image = models.FileField("Изображение", upload_to="prices/", )
+    image_png = models.ImageField("Изображение", blank=True, help_text='Необязательно', upload_to="prices/")
+    image = models.FileField("Иконка", upload_to="prices/", )
+    slug = models.SlugField("URL", max_length=50, unique=True, db_index=True, default='', help_text='URL для новости должен быть уникальным')
     
     def __str__(self):
         return self.title 
 
+    def get_absolute_url(self):
+        return reverse("price-details", kwargs={"slug": self.slug})
+    
+    def get_review(self):
+        return self.reviews_set.filter(parent__isnull=True)
     
     class Meta:
         verbose_name = 'Цена'
