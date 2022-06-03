@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # Перед заливом на сервер заменить
-SECRET_KEY = 'django-insecure-n236*v*x6hb5v0k^=q%0neocj=xvg0bcr7l@6gz)#eh-ej1g9u'
+SECRET_KEY = ''
 
 # для сервер версии
 #S_KEY = os.environ.get('djangokey')
